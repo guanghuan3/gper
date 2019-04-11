@@ -6,7 +6,7 @@ import com.guanghuan3.homework.designpattern.factory.*;
  * Created by Administrator
  * on 2019/4/9.
  */
-public class HuaweiFactory implements IDigitalFactory {
+public class HuaweiFactory extends AbstractDigitalFactory {
     public IPhone createPhone() {
         return new HuaweiCellPhone();
     }

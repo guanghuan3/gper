@@ -6,16 +6,13 @@ import com.guanghuan3.homework.designpattern.factory.*;
  * Created by Administrator
  * on 2019/4/9.
  */
-public class SamsungFactory implements IDigitalFactory {
+public class SamsungFactory extends AbstractDigitalFactory {
+
     public IPhone createPhone() {
         return new SamsungCellPhone();
     }
 
     public IPad createPad() {
         return new SamsungPad();
-    }
-
-    public ISignal signal() {
-        return null;
     }
 }
