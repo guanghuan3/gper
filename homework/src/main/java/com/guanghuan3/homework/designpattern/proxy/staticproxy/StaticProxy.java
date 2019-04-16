@@ -1,5 +1,7 @@
 package com.guanghuan3.homework.designpattern.proxy.staticproxy;
 
+import com.guanghuan3.homework.designpattern.proxy.HouseMaster;
+
 /**
  * Created by Administrator
  *

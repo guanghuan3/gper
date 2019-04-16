@@ -1,4 +1,4 @@
-package com.guanghuan3.homework.designpattern.proxy.staticproxy;
+package com.guanghuan3.homework.designpattern.proxy;
 
 /**
  * Created by Administrator
