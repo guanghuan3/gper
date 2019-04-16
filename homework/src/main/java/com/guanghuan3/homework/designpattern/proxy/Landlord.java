@@ -14,4 +14,8 @@ public class Landlord implements HouseMaster {
     public void rentHouse() {
         System.err.println("房东租房");
     }
+
+    public void decorate() {
+        System.err.println("房东装修");
+    }
 }

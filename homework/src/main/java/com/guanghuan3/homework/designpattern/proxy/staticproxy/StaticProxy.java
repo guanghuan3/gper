@@ -28,4 +28,10 @@ public class StaticProxy implements HouseMaster {
         target.rentHouse();
         System.err.println("代理接手房东出粗，由代理出租结束，代理收取了20%手续费");
     }
+
+    // 后续新增的装修方法，需要修改代理的代码
+    public void decorate() {
+        System.err.println("赶不上变化，比动态代理麻烦，生意被动态代理抢了");
+//        target.decorate();
+    }
 }

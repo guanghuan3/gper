@@ -23,5 +23,7 @@ public class StaticProxyTest {
         proxy.rentHouse();
 
         proxy.sellHouse();
+
+        proxy.decorate();
     }
 }
