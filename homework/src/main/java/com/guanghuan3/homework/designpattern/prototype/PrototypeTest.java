@@ -21,10 +21,10 @@ public class PrototypeTest {
             t.setSeat("5排6座");
             t.setTiketName("周杰伦演唱会");
 
-            Player zhoujielun = new Player();
-            zhoujielun.setName("周杰伦");
-            zhoujielun.setAge(37);
-            zhoujielun.setGender("男");
+//            Player zhoujielun = new Player();
+//            zhoujielun.setName("周杰伦");
+//            zhoujielun.setAge(37);
+//            zhoujielun.setGender("男");
 
             List<Item> items = new ArrayList<Item>();
             Item i = new Item();
