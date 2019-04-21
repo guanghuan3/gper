@@ -8,6 +8,8 @@ import com.guanghuan3.homework.myspringframework.beans.MyBeanWrapper;
 import com.guanghuan3.homework.myspringframework.beans.config.MyBeanDefinition;
 import com.guanghuan3.homework.myspringframework.beans.support.MyBeanDefinitionReader;
 import com.guanghuan3.homework.myspringframework.beans.support.MyDefaultListableBeanFactory;
+import com.guanghuan3.homework.myspringframework.mybusiness.service.impl.MyTestServiceImpl;
+import com.guanghuan3.homework.myspringframework.utils.MyStringUtils;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -77,8 +79,8 @@ public class MyApplicationContext extends MyDefaultListableBeanFactory implement
     }
 
     public <T> T getBean(Class<T> clazz) {
-//        return getBean();
-        return null;
+        // 根据类获取类名首字母小写的bean
+        return (T) getBean(MyStringUtils.toFirstLowerCase(clazz.getSimpleName()));
     }
 
     /**
@@ -105,16 +107,17 @@ public class MyApplicationContext extends MyDefaultListableBeanFactory implement
         Class<?> cls = instance.getClass();
         if (cls.isAnnotationPresent(MyController.class) || cls.isAnnotationPresent(MyService.class)) {
             // 获取所有fields
-            Field[] fields = cls.getFields();
+            Field[] fields = cls.getDeclaredFields();
             for (Field f : fields) {
                 // 是否被MyAutowired标记
                 if (f.isAnnotationPresent(MyAutowired.class)) {
                     MyAutowired anno = f.getAnnotation(MyAutowired.class);
                     String autowiredName = anno.name();
 
-                    if (autowiredName == null || "".equals(autowiredName)) {
+                    if (MyStringUtils.isEmpty(autowiredName)) {
+
                         // 如果没有指定注入的bean的名字，默认使用字段的类名
-                        autowiredName = f.getType().getName();
+                        autowiredName = f.getName();
                     }
 
                     // 设置强制访问
@@ -171,7 +174,8 @@ public class MyApplicationContext extends MyDefaultListableBeanFactory implement
         MyApplicationContext context = new MyApplicationContext("classpath:application.properties");
 
         System.err.println(context.getBean("myTestController"));
-        System.err.println(context.getBean("myTestServiceImpl"));
+        System.err.println(context.getBean(MyTestServiceImpl.class));
+//        System.err.println(context.getBean("myTestServiceImpl"));
 
 //        System.err.println(context.factoryBeanInstanceCache);
 //        System.err.println(context.beanDefinitionsList);

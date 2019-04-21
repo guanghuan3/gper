@@ -1,10 +1,9 @@
 package com.guanghuan3.homework.myspringframework.mybusiness.controller;
 
+import com.guanghuan3.homework.myspringframework.annotation.MyAutowired;
 import com.guanghuan3.homework.myspringframework.annotation.MyController;
 import com.guanghuan3.homework.myspringframework.annotation.MyRequestParam;
 import com.guanghuan3.homework.myspringframework.mybusiness.service.IMyTestService;
-import com.guanghuan3.homework.myspringframework.mybusiness.service.impl.MyTestServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 @MyController
 public class MyTestController {
 
-    @Autowired
+    @MyAutowired
     private IMyTestService myTestServiceImpl;
 
     public String test1(@MyRequestParam String name) {
