@@ -6,7 +6,7 @@ package com.guanghuan3.homework.myspringframework.beans.config;
  */
 public class MyBeanDefinition {
 
-    private Boolean lazyInit;
+    private Boolean lazyInit = false;
 
     private String beanClassName;
 

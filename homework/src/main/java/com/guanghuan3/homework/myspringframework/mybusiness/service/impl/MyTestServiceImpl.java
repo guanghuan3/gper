@@ -11,9 +11,6 @@ import com.guanghuan3.homework.myspringframework.utils.MyStringUtils;
 @MyService
 public class MyTestServiceImpl implements IMyTestService {
 
-
-    private IMyTestService myTestService;
-
     public String test(String name) {
         return MyStringUtils.isEmpty(name) ? "这家伙很懒，什么也没留下" : name;
     }
