@@ -45,6 +45,8 @@ public class MyApplicationContext extends MyDefaultListableBeanFactory implement
     }
 
     public void refresh() {
+        destroyBeans();
+
         // 1、定位，读取配置文件
         reader = new MyBeanDefinitionReader(configLocations);
 
@@ -127,6 +129,11 @@ public class MyApplicationContext extends MyDefaultListableBeanFactory implement
                         if (factoryBeanInstanceCache.get(autowiredName) == null) {
                             continue;
                         }
+                        // 需要添加clear
+                        if (f.get(instance) != null) {
+                            continue;
+                        }
+                        // 注入
                         f.set(instance, factoryBeanInstanceCache.get(autowiredName).getWrappedInstance());
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
@@ -174,6 +181,7 @@ public class MyApplicationContext extends MyDefaultListableBeanFactory implement
         MyApplicationContext context = new MyApplicationContext("classpath:application.properties");
 
         System.err.println(context.getBean("myTestController"));
+//        System.err.println(context.getBean("myTestController"));
         System.err.println(context.getBean(MyTestServiceImpl.class));
         System.err.println(context.getBean("myTestServiceImpl"));
 //        System.err.println(context.getBean("myTestServiceImpl"));

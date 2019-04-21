@@ -30,4 +30,11 @@ public class MyDefaultListableBeanFactory extends MyAbstractApplicationContext {
     protected Map<String, MyBeanDefinition> getBeanDefinitionMap() {
         return beanDefinitionMap;
     }
+
+    /**
+     * 清空
+     */
+    protected void destroyBeans() {
+        beanDefinitionMap.clear();
+    }
 }
