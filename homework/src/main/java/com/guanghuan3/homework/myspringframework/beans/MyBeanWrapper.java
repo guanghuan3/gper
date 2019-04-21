@@ -7,17 +7,31 @@ package com.guanghuan3.homework.myspringframework.beans;
  */
 public class MyBeanWrapper {
 
+    private Object wrapperedInstance;
+
+    private Class<?> wrapperedClass;
+
+    public MyBeanWrapper(Object instance) {
+        this.wrapperedInstance = instance;
+        this.wrapperedClass = wrapperedInstance.getClass();
+    }
+
+    public MyBeanWrapper(Object instance, Class<?> instanceClass) {
+        this.wrapperedInstance = instance;
+        this.wrapperedClass = instanceClass;
+    }
+
     /**
      * Return the bean instance wrapped by this object.
      */
     public Object getWrappedInstance() {
-        return null;
+        return this.wrapperedInstance;
     }
 
     /**
      * Return the type of the wrapped bean instance.
      */
     public Class<?> getWrappedClass() {
-        return null;
+        return this.wrapperedClass;
     }
 }

@@ -3,8 +3,6 @@ package com.guanghuan3.homework.myspringframework.beans.support;
 import com.guanghuan3.homework.myspringframework.annotation.MyController;
 import com.guanghuan3.homework.myspringframework.annotation.MyService;
 import com.guanghuan3.homework.myspringframework.beans.config.MyBeanDefinition;
-import com.guanghuan3.homework.myspringframework.mybusiness.controller.MyTestControllger;
-import com.guanghuan3.homework.myspringframework.mybusiness.service.impl.MyTestServiceImpl;
 import com.guanghuan3.homework.myspringframework.utils.MyStringUtils;
 
 import java.io.File;
@@ -30,6 +28,7 @@ public class MyBeanDefinitionReader {
     public MyBeanDefinitionReader(String... configLocations) {
         for (String location : configLocations) {
             InputStream is = MyBeanDefinition.class.getClassLoader().getResourceAsStream(location.replaceAll("classpath:", ""));
+//            InputStream is = MyBeanDefinition.class.getResourceAsStream(location.replaceAll("classpath:", ""));
             try {
                 prop.load(is);
             } catch (Exception e) {
@@ -54,7 +53,6 @@ public class MyBeanDefinitionReader {
      * @param scanPackage
      */
     private void doScanner(String scanPackage) {
-        System.err.println(scanPackage);
         // web场景下使用
 //        URL url = MyBeanDefinitionReader.class.getClassLoader().getResource("/" + scanPackage.replaceAll("\\.", "/"));
         // client场景下使用
@@ -73,8 +71,6 @@ public class MyBeanDefinitionReader {
                 }
             }
         }
-
-        System.err.println(registerBeanClasses);
     }
 
     public List<MyBeanDefinition> loadBeanDefinitions() {
@@ -109,7 +105,6 @@ public class MyBeanDefinitionReader {
                 beanDefinition = new MyBeanDefinition();
                 beanDefinition.setBeanClassName(className);
                 beanDefinition.setFactoryBeanName(MyStringUtils.toFirstLowerCase((beanClass.getSimpleName())));
-//                beanDefinition.setLazyInit();
             } else {
                 return null;
             }
@@ -132,10 +127,8 @@ public class MyBeanDefinitionReader {
         return prop;
     }
 
-    public static void main(String[] args) {
-        new MyBeanDefinitionReader("classpath:application.properties");
-
-//        System.err.println(new MyBeanDefinitionReader().containsAnnotation(MyTestServiceImpl.class));
-    }
+//    public static void main(String[] args) {
+//        new MyBeanDefinitionReader("classpath:application.properties");
+//    }
 
 }
