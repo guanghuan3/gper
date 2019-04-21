@@ -171,6 +171,7 @@ public class MyApplicationContext extends MyDefaultListableBeanFactory implement
         MyApplicationContext context = new MyApplicationContext("classpath:application.properties");
 
         System.err.println(context.getBean("myTestController"));
+        System.err.println(context.getBean("myTestServiceImpl"));
 
 //        System.err.println(context.factoryBeanInstanceCache);
 //        System.err.println(context.beanDefinitionsList);
