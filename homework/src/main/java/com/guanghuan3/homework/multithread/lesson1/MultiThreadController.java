@@ -36,6 +36,7 @@ public class MultiThreadController {
     @RequestMapping("asynchronize")
     public String asynchronize(HttpServletRequest request, HttpServletResponse response) {
 
+        // TODO 1、根据ID查询数据库工单信息， 2、根据存在的工单信息判断工单状态是否是待处理，3、更新工单信息并入库
         Thread t = new Thread(() -> {
             List<Order> orderList = doGetOrderList(request);
 
